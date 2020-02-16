@@ -184,6 +184,7 @@ public class PopUpLevelBase extends BorderPane {
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeLine.getKeyFrames().add(kf);
         timeLine.play();
+        
     
     }
     
