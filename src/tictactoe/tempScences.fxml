@@ -30,27 +30,27 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <AnchorPane id="actionPane" fx:id="actionPane" layoutX="31.0" layoutY="61.0" prefHeight="305.0" prefWidth="297.0" styleClass="action" stylesheets="@../css/styles.css">
+                  <AnchorPane id="actionPane" fx:id="actionPane" layoutX="32.0" layoutY="61.0" prefHeight="305.0" prefWidth="297.0" styleClass="action" stylesheets="@../css/styles.css">
                      <children>
                         <Line id="lineV2" fx:id="lineV2" endX="-105.99996948242188" endY="267.0" layoutX="304.0" layoutY="20.0" startX="-105.99998474121094" startY="8.666664123535156" stroke="WHITE" strokeWidth="4.0" />
                         <Line id="lineV1" fx:id="lineV1" endX="-105.99995422363281" endY="266.3333435058594" layoutX="201.0" layoutY="21.0" startX="-105.99998474121094" startY="8.666664123535156" stroke="WHITE" strokeWidth="4.0" />
                         <Line id="lineH2" fx:id="lineH2" endX="-127.99998474121094" endY="290.0" layoutX="130.0" layoutY="-88.0" startX="159.33334350585938" startY="290.0" stroke="WHITE" strokeWidth="4.0" />
                         <Line id="lineH1" fx:id="lineH1" endX="-142.99998474121094" endY="290.0" layoutX="145.0" layoutY="-176.0" startX="143.33334350585938" startY="290.0" stroke="WHITE" strokeWidth="4.0" />
                         <Button id="btn3" fx:id="btn3" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="29.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
-                        <Button id="btn6" fx:id="btn6" layoutX="201.0" layoutY="117.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textFill="WHITE" />
-                        <Button id="btn7" fx:id="btn7" layoutX="3.0" layoutY="205.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textFill="WHITE" />
-                        <Button id="btn9" fx:id="btn9" layoutX="201.0" layoutY="205.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textFill="WHITE" />
+                        <Button id="btn6" fx:id="btn6" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="117.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
+                        <Button id="btn7" fx:id="btn7" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="205.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
+                        <Button id="btn9" fx:id="btn9" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="205.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
                         <Button id="btn1" fx:id="btn1" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="29.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
                         <Button id="btn2" fx:id="btn2" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="29.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="97.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
                         <Button id="btn4" fx:id="btn4" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="117.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
                         <Button id="btn5" fx:id="btn5" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="117.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="97.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
-                        <Button id="btn8" fx:id="btn8" layoutX="98.0" layoutY="205.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="97.0" styleClass="btn" textFill="WHITE" />
+                        <Button id="btn8" fx:id="btn8" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="205.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="97.0" styleClass="btn" textAlignment="CENTER" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                   <Line id="lineH2" fx:id="lineH21" endX="-171.0" endY="290.0" layoutX="173.0" layoutY="72.0" startX="182.33334350585938" startY="290.0" stroke="#7e7c7c" strokeWidth="2.0" />
                   <AnchorPane id="scorePane" layoutX="6.0" layoutY="366.0" prefHeight="140.0" prefWidth="346.0">
                      <children>
-                        <Label id="score" fx:id="score" alignment="CENTER" contentDisplay="CENTER" layoutX="144.0" layoutY="14.0" styleClass="fixedText" stylesheets="@../css/styles.css" text="Score" textAlignment="CENTER" textFill="#fce473">
+                        <Label id="score" fx:id="score" alignment="CENTER" contentDisplay="CENTER" layoutX="144.0" layoutY="14.0" styleClass="scoreText" stylesheets="@../css/styles.css" text="Score" textAlignment="CENTER" textFill="#fce473">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -90,9 +90,14 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
+                        <ImageView accessibleRole="BUTTON" fitHeight="55.0" fitWidth="128.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons/exit_icon.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="512.0" prefHeight="29.0" prefWidth="45.0" styleClass="scoreText" text="Satus:" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="28.0" prefHeight="29.0" prefWidth="45.0" styleClass="scoreText" text="Satus:" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

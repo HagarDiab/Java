@@ -15,7 +15,7 @@
          <children>
             <AnchorPane id="contentPane" fx:id="contentPane" layoutX="95.0" prefHeight="600.0" prefWidth="359.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="105.66666666666669" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane layoutX="39.0" layoutY="106.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="281.0" style="-fx-background-color: white;">
+                  <AnchorPane layoutX="39.0" layoutY="106.0" AnchorPane.bottomAnchor="79.33333333333331" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="106.0">
                      <children>
                         <TextField fx:id="usrNameField" layoutX="41.0" layoutY="138.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" styleClass="txtfield" stylesheets="@../css/styles.css">
                            <effect>

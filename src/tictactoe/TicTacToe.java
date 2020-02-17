@@ -78,7 +78,7 @@ public class TicTacToe extends Application {
 
     }*/
 
-        Parent root = tmp;
+        Parent root = signIn;
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
