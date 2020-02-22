@@ -1,5 +1,11 @@
 package tictactoe;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -8,8 +14,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 
 public class GameSceneBase extends BorderPane {
+    
+    menuSceneBase ms= new menuSceneBase();
 
     protected final AnchorPane leftSideAnchorPane;
     protected final AnchorPane rightSideAnchorPane;
@@ -436,7 +445,21 @@ public class GameSceneBase extends BorderPane {
 
     }
 
-    protected void loadHomeScene(javafx.scene.input.MouseEvent mouseEvent){}
+    protected void loadHomeScene(javafx.scene.input.MouseEvent mouseEvent){
+        Parent root = ms;
+            Scene scene = homeIcon.getScene();
+
+            root.translateYProperty().set(scene.getHeight());
+            //containerPane.getChildren().add(contentPane);
+            //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
+            contentPane.getChildren().add(root);
+
+            Timeline timeLine = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+            timeLine.getKeyFrames().add(kf);
+            timeLine.play();
+    }
 
     protected void muteSound(javafx.scene.input.MouseEvent mouseEvent){}
 
