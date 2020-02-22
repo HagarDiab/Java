@@ -16,7 +16,7 @@
       <AnchorPane fx:id="leftSideAnchorPane" prefHeight="512.0" prefWidth="179.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <AnchorPane fx:id="rightSideAnchorPane" prefHeight="587.0" prefWidth="186.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="rightSideAnchorPane" prefHeight="587.0" prefWidth="188.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
       <AnchorPane id="contentPane" fx:id="contentPane" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="393.0" BorderPane.alignment="BOTTOM_CENTER">
@@ -68,7 +68,7 @@
                </font>
             </TextField>
             <Label fx:id="haveAccountLabel" layoutX="118.0" layoutY="502.0" onMouseClicked="#loadSingInScene" text="Already have an account ?" textFill="#73c2fb" underline="true" />
-            <ImageView id="homeIcon" fx:id="homeIcon" accessibleRole="BUTTON" accessibleRoleDescription="toHomePage" fitHeight="39.0" fitWidth="40.0" layoutX="167.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="473.33333333333337" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="187.14538319905597" AnchorPane.topAnchor="75.0">
+            <ImageView id="homeIcon" fx:id="homeIcon" accessibleRole="BUTTON" accessibleRoleDescription="toHomePage" fitHeight="39.0" fitWidth="40.0" layoutX="167.0" layoutY="75.0" onMouseClicked="#loadHomeScene" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="473.33333333333337" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="187.14538319905597" AnchorPane.topAnchor="75.0">
                <image>
                   <Image url="@../img/icon.png" />
                </image>

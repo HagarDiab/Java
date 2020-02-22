@@ -19,7 +19,7 @@ import javafx.util.Duration;
 
 public class PopUpLevelBase extends BorderPane {
     
-    gameScene gs =new gameScene();
+    GameSceneBase gs =new GameSceneBase();
 
     protected final AnchorPane containerPane;
     protected final AnchorPane contentPane;

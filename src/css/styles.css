@@ -1,5 +1,5 @@
-#rootPane{
-    -fx-background-image : url("../img/bg_6.png");
+#parentPane{
+    -fx-background-image : url("../img/bg_5.png");
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover, auto;
 }

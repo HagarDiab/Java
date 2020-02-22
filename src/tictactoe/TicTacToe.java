@@ -46,8 +46,9 @@ public class TicTacToe extends Application {
         scaleTransition.setAutoReverse(false);
         scaleTransition.play();
 
-        stage.setMinWidth(361.0);
-        stage.setMinHeight(601.0);
+        stage.setMinWidth(560.0);
+        stage.setMinHeight(600.0);
+        //stage.setResizable(false);
 
         /*Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
 
