@@ -80,7 +80,7 @@ public class TicTacToe extends Application {
 
     }*/
 
-        Parent root = hs;
+        Parent root = signIn;
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
