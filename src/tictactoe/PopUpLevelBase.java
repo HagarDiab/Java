@@ -8,10 +8,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.effect.InnerShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
@@ -19,13 +16,11 @@ import javafx.util.Duration;
 
 public class PopUpLevelBase extends BorderPane {
     
-    GameSceneBase gs =new GameSceneBase();
+    gameSceneBase gs =new gameSceneBase();
 
-    protected final AnchorPane containerPane;
+    protected final AnchorPane leftSideAnchorPane;
+    protected final AnchorPane rightSideAnchorPane;
     protected final AnchorPane contentPane;
-    protected final Label title;
-    protected final ImageView imageView;
-    protected final Label playerName;
     protected final Button hardOption;
     protected final InnerShadow innerShadow;
     protected final Button mediumOption;
@@ -34,12 +29,11 @@ public class PopUpLevelBase extends BorderPane {
     protected final InnerShadow innerShadow1;
 
     public PopUpLevelBase() {
+        
 
-        containerPane = new AnchorPane();
+        leftSideAnchorPane = new AnchorPane();
+        rightSideAnchorPane = new AnchorPane();
         contentPane = new AnchorPane();
-        title = new Label();
-        imageView = new ImageView();
-        playerName = new Label();
         hardOption = new Button();
         innerShadow = new InnerShadow();
         mediumOption = new Button();
@@ -47,55 +41,37 @@ public class PopUpLevelBase extends BorderPane {
         easyOption = new Button();
         innerShadow1 = new InnerShadow();
 
-        setId("rootPane");
-        setMaxHeight(USE_PREF_SIZE);
+        setId("parentPane");
         setMaxWidth(USE_PREF_SIZE);
-        setMinHeight(USE_PREF_SIZE);
         setMinWidth(USE_PREF_SIZE);
-        setPrefHeight(600.0);
-        setPrefWidth(560.0);
+        setPrefHeight(300.0);
+        setPrefWidth(300.0);
+        getStylesheets().add("/tictactoe/../css/styles.css");
 
-        BorderPane.setAlignment(containerPane, javafx.geometry.Pos.CENTER);
-        containerPane.setId("containerPane");
-        containerPane.setPrefHeight(551.0);
-        containerPane.setPrefWidth(630.0);
-        containerPane.getStylesheets().add("/tictactoe/../css/styles.css");
+        BorderPane.setAlignment(leftSideAnchorPane, javafx.geometry.Pos.CENTER);
+        leftSideAnchorPane.setPrefHeight(300.0);
+        leftSideAnchorPane.setPrefWidth(37.0);
+        leftSideAnchorPane.setStyle("-fx-background-color: black;");
+        setLeft(leftSideAnchorPane);
 
-        AnchorPane.setBottomAnchor(contentPane, 0.0);
-        AnchorPane.setLeftAnchor(contentPane, 95.0);
-        AnchorPane.setRightAnchor(contentPane, 105.66666666666669);
-        AnchorPane.setTopAnchor(contentPane, 0.0);
+        BorderPane.setAlignment(rightSideAnchorPane, javafx.geometry.Pos.CENTER);
+        rightSideAnchorPane.setPrefHeight(300.0);
+        rightSideAnchorPane.setPrefWidth(75.0);
+        rightSideAnchorPane.setStyle("-fx-background-color: black;");
+        setRight(rightSideAnchorPane);
+
+        BorderPane.setAlignment(contentPane, javafx.geometry.Pos.BOTTOM_CENTER);
         contentPane.setId("contentPane");
-        contentPane.setLayoutX(95.0);
-        contentPane.setPrefHeight(600.0);
-        contentPane.setPrefWidth(359.0);
-
-        title.setId("title");
-        title.setLayoutX(56.0);
-        title.setLayoutY(6.0);
-        title.setText("TICTOCTOE GAME");
-        title.setTextFill(javafx.scene.paint.Color.valueOf("#fce473"));
-
-        imageView.setFitHeight(51.0);
-        imageView.setFitWidth(50.0);
-        imageView.setLayoutX(2.0);
-        imageView.setLayoutY(2.0);
-        imageView.setPickOnBounds(true);
-        imageView.setPreserveRatio(true);
-        imageView.setImage(new Image(getClass().getResource("../img/icon.png").toExternalForm()));
-
-        playerName.setId("playerName");
-        playerName.setLayoutX(65.0);
-        playerName.setLayoutY(19.0);
-        playerName.setText("playerName");
-        playerName.setTextFill(javafx.scene.paint.Color.valueOf("#fce473"));
-        playerName.setFont(new Font("System Bold", 13.0));
+        contentPane.setMaxWidth(USE_PREF_SIZE);
+        contentPane.setMinWidth(USE_PREF_SIZE);
+        contentPane.setPrefHeight(300.0);
+        contentPane.setPrefWidth(226.0);
 
         hardOption.setAlignment(javafx.geometry.Pos.CENTER);
         hardOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         hardOption.setId("onePlayer");
-        hardOption.setLayoutX(108.0);
-        hardOption.setLayoutY(187.0);
+        hardOption.setLayoutX(60.0);
+        hardOption.setLayoutY(50.0);
         hardOption.setMnemonicParsing(false);
         hardOption.setOnAction(this::loadGameSceneHardLevel);
         hardOption.setPrefHeight(41.0);
@@ -118,8 +94,8 @@ public class PopUpLevelBase extends BorderPane {
         mediumOption.setAlignment(javafx.geometry.Pos.CENTER);
         mediumOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         mediumOption.setId("multiPlayer");
-        mediumOption.setLayoutX(108.0);
-        mediumOption.setLayoutY(270.0);
+        mediumOption.setLayoutX(62.0);
+        mediumOption.setLayoutY(125.0);
         mediumOption.setMnemonicParsing(false);
         mediumOption.setOnAction(this::loadGameSceneMediumLevel);
         mediumOption.setPrefHeight(41.0);
@@ -141,8 +117,8 @@ public class PopUpLevelBase extends BorderPane {
         easyOption.setAlignment(javafx.geometry.Pos.CENTER);
         easyOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         easyOption.setId("exit");
-        easyOption.setLayoutX(108.0);
-        easyOption.setLayoutY(357.0);
+        easyOption.setLayoutX(60.0);
+        easyOption.setLayoutY(197.0);
         easyOption.setMnemonicParsing(false);
         easyOption.setOnAction(this::loadGameSceneEasyLevel);
         easyOption.setPrefHeight(41.0);
@@ -158,15 +134,11 @@ public class PopUpLevelBase extends BorderPane {
         innerShadow1.setRadius(11.0);
         innerShadow1.setWidth(25.0);
         easyOption.setEffect(innerShadow1);
-        setCenter(containerPane);
+        setCenter(contentPane);
 
-        contentPane.getChildren().add(title);
-        contentPane.getChildren().add(imageView);
-        contentPane.getChildren().add(playerName);
         contentPane.getChildren().add(hardOption);
         contentPane.getChildren().add(mediumOption);
         contentPane.getChildren().add(easyOption);
-        containerPane.getChildren().add(contentPane);
 
     }
 
@@ -177,7 +149,7 @@ public class PopUpLevelBase extends BorderPane {
         root.translateYProperty().set(scene.getHeight());
         //containerPane.getChildren().add(contentPane);
         //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        containerPane.getChildren().add(root);
+        contentPane.getChildren().add(root);
 
         Timeline timeLine = new Timeline();
         KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
@@ -195,7 +167,7 @@ public class PopUpLevelBase extends BorderPane {
         root.translateYProperty().set(scene.getHeight());
         //containerPane.getChildren().add(contentPane);
         //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        containerPane.getChildren().add(root);
+        contentPane.getChildren().add(root);
 
         Timeline timeLine = new Timeline();
         KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
@@ -211,7 +183,7 @@ public class PopUpLevelBase extends BorderPane {
         root.translateYProperty().set(scene.getHeight());
         //containerPane.getChildren().add(contentPane);
         //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        containerPane.getChildren().add(root);
+        contentPane.getChildren().add(root);
 
         Timeline timeLine = new Timeline();
         KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);

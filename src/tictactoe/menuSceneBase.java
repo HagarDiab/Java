@@ -18,12 +18,15 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class menuSceneBase extends BorderPane {
-    
-    PopUpLocalVsNwBase nwPopUp =new PopUpLocalVsNwBase();
-    PopUpLevelBase levelPopUp =new PopUpLevelBase();
 
+    PopUpLocalVsNwBase nwPopUp = new PopUpLocalVsNwBase();
+    PopUpLevelBase levelPopUp = new PopUpLevelBase();
+    historySceneBase hs = new historySceneBase(); 
+
+    protected final AnchorPane leftSideAnchorPane;
+    protected final AnchorPane rightSideAnchorPane;
     protected final AnchorPane containerPane;
-    protected final AnchorPane contentPane;
+    protected final AnchorPane contentPane1;
     protected final Label title;
     protected final ImageView imageView;
     protected final Label playerName;
@@ -38,8 +41,10 @@ public class menuSceneBase extends BorderPane {
 
     public menuSceneBase() {
 
+        leftSideAnchorPane = new AnchorPane();
+        rightSideAnchorPane = new AnchorPane();
         containerPane = new AnchorPane();
-        contentPane = new AnchorPane();
+        contentPane1 = new AnchorPane();
         title = new Label();
         imageView = new ImageView();
         playerName = new Label();
@@ -52,28 +57,34 @@ public class menuSceneBase extends BorderPane {
         about = new Label();
         history = new Label();
 
-        setId("rootPane");
-        setMaxHeight(USE_PREF_SIZE);
+        setId("parentPane");
         setMaxWidth(USE_PREF_SIZE);
-        setMinHeight(USE_PREF_SIZE);
         setMinWidth(USE_PREF_SIZE);
-        setPrefHeight(600.0);
-        setPrefWidth(560.0);
+        setPrefHeight(512.0);
+        setPrefWidth(600.0);
+        getStylesheets().add("/tictactoe/../css/styles.css");
 
-        BorderPane.setAlignment(containerPane, javafx.geometry.Pos.CENTER);
-        containerPane.setId("containerPane");
-        containerPane.setPrefHeight(551.0);
-        containerPane.setPrefWidth(630.0);
-        containerPane.getStylesheets().add("/tictactoe/../css/styles.css");
+        BorderPane.setAlignment(leftSideAnchorPane, javafx.geometry.Pos.CENTER);
+        leftSideAnchorPane.setPrefHeight(512.0);
+        leftSideAnchorPane.setPrefWidth(179.0);
+        setLeft(leftSideAnchorPane);
 
-        AnchorPane.setBottomAnchor(contentPane, 0.0);
-        AnchorPane.setLeftAnchor(contentPane, 95.0);
-        AnchorPane.setRightAnchor(contentPane, 105.66666666666669);
-        AnchorPane.setTopAnchor(contentPane, 0.0);
-        contentPane.setId("contentPane");
-        contentPane.setLayoutX(95.0);
-        contentPane.setPrefHeight(600.0);
-        contentPane.setPrefWidth(359.0);
+        BorderPane.setAlignment(rightSideAnchorPane, javafx.geometry.Pos.CENTER);
+        rightSideAnchorPane.setPrefHeight(600.0);
+        rightSideAnchorPane.setPrefWidth(182.0);
+        setRight(rightSideAnchorPane);
+
+        BorderPane.setAlignment(containerPane, javafx.geometry.Pos.BOTTOM_CENTER);
+        containerPane.setId("contentPane");
+        containerPane.setMaxWidth(USE_PREF_SIZE);
+        containerPane.setMinWidth(USE_PREF_SIZE);
+        containerPane.setPrefHeight(600.0);
+        containerPane.setPrefWidth(393.0);
+
+        contentPane1.setId("contentPane");
+        contentPane1.setLayoutX(19.0);
+        contentPane1.setPrefHeight(600.0);
+        contentPane1.setPrefWidth(359.0);
 
         title.setId("title");
         title.setLayoutX(56.0);
@@ -102,7 +113,7 @@ public class menuSceneBase extends BorderPane {
         onePlayer.setLayoutX(108.0);
         onePlayer.setLayoutY(187.0);
         onePlayer.setMnemonicParsing(false);
-        onePlayer.setOnAction(this::loadPopUpLevelsWithOnePlayer);
+        onePlayer.setOnAction(this::loadPopUpLevels);
         onePlayer.setPrefHeight(41.0);
         onePlayer.setPrefWidth(143.0);
         onePlayer.getStyleClass().add("options");
@@ -191,19 +202,19 @@ public class menuSceneBase extends BorderPane {
         history.setFont(new Font("System Bold", 15.0));
         setCenter(containerPane);
 
-        contentPane.getChildren().add(title);
-        contentPane.getChildren().add(imageView);
-        contentPane.getChildren().add(playerName);
-        contentPane.getChildren().add(onePlayer);
-        contentPane.getChildren().add(multiPlayer);
-        contentPane.getChildren().add(exit);
-        contentPane.getChildren().add(about);
-        contentPane.getChildren().add(history);
-        containerPane.getChildren().add(contentPane);
+        contentPane1.getChildren().add(title);
+        contentPane1.getChildren().add(imageView);
+        contentPane1.getChildren().add(playerName);
+        contentPane1.getChildren().add(onePlayer);
+        contentPane1.getChildren().add(multiPlayer);
+        contentPane1.getChildren().add(exit);
+        contentPane1.getChildren().add(about);
+        contentPane1.getChildren().add(history);
+        containerPane.getChildren().add(contentPane1);
 
     }
 
-    protected void loadPopUpLevelsWithOnePlayer(javafx.event.ActionEvent actionEvent){
+    protected void loadPopUpLevels(javafx.event.ActionEvent actionEvent) {
         Parent root = levelPopUp;
         Scene scene = onePlayer.getScene();
 
@@ -217,10 +228,9 @@ public class menuSceneBase extends BorderPane {
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeLine.getKeyFrames().add(kf);
         timeLine.play();
-    
     }
 
-    protected void loadPopUpLocalVsNw(javafx.event.ActionEvent actionEvent){
+    protected void loadPopUpLocalVsNw(javafx.event.ActionEvent actionEvent) {
         Parent root = nwPopUp;
         Scene scene = multiPlayer.getScene();
 
@@ -236,10 +246,26 @@ public class menuSceneBase extends BorderPane {
         timeLine.play();
     }
 
-    protected void exitProgram(javafx.event.ActionEvent actionEvent){}
+    protected void exitProgram(javafx.event.ActionEvent actionEvent) {
+    }
 
-    protected void loadAboutScene(javafx.scene.input.MouseEvent mouseEvent){}
+    protected void loadAboutScene(javafx.scene.input.MouseEvent mouseEvent) {
+    }
 
-    protected void historyScene(javafx.scene.input.MouseEvent mouseEvent){}
+    protected void historyScene(javafx.scene.input.MouseEvent mouseEvent) {
+        Parent root = hs;
+        Scene scene = history.getScene();
+
+        root.translateYProperty().set(scene.getHeight());
+        //containerPane.getChildren().add(contentPane);
+        //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
+        containerPane.getChildren().add(root);
+
+        Timeline timeLine = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeLine.getKeyFrames().add(kf);
+        timeLine.play();
+    }
 
 }

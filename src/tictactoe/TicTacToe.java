@@ -32,6 +32,7 @@ public class TicTacToe extends Application {
 
     signInSceneBase signIn = new signInSceneBase();
     FXMLTmpBase tmp = new FXMLTmpBase();
+    historySceneBase hs = new historySceneBase();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -79,7 +80,7 @@ public class TicTacToe extends Application {
 
     }*/
 
-        Parent root = signIn;
+        Parent root = hs;
         Scene scene = new Scene(root);
 
         stage.setScene(scene);

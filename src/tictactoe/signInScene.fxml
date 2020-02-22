@@ -19,7 +19,7 @@
       <AnchorPane fx:id="rightSideAnchorPane" prefHeight="600.0" prefWidth="182.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <AnchorPane id="contentPane" fx:id="contentPane" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="393.0" BorderPane.alignment="BOTTOM_CENTER">
+      <AnchorPane id="contentPane" fx:id="containerPane" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="393.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
             <AnchorPane fx:id="childPane" layoutY="41.0" prefHeight="647.0" prefWidth="393.0" AnchorPane.bottomAnchor="0.33333333333325754" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
                <children>

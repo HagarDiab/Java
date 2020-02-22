@@ -11,16 +11,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class signUpSceneBase extends BorderPane {
-    
     menuSceneBase ms= new menuSceneBase();
+    signInSceneBase signIn = new signInSceneBase();
 
-    protected final AnchorPane containerPane;
+    protected final AnchorPane leftSideAnchorPane;
+    protected final AnchorPane rightSideAnchorPane;
     protected final AnchorPane contentPane;
     protected final TextField usrNameField;
     protected final Glow glow;
@@ -31,10 +34,12 @@ public class signUpSceneBase extends BorderPane {
     protected final TextField emailField;
     protected final Glow glow1;
     protected final Label haveAccountLabel;
+    protected final ImageView homeIcon;
 
     public signUpSceneBase() {
 
-        containerPane = new AnchorPane();
+        leftSideAnchorPane = new AnchorPane();
+        rightSideAnchorPane = new AnchorPane();
         contentPane = new AnchorPane();
         usrNameField = new TextField();
         glow = new Glow();
@@ -45,32 +50,34 @@ public class signUpSceneBase extends BorderPane {
         emailField = new TextField();
         glow1 = new Glow();
         haveAccountLabel = new Label();
+        homeIcon = new ImageView();
 
-        setId("rootPane");
-        setMaxHeight(USE_PREF_SIZE);
+        setId("parentPane");
         setMaxWidth(USE_PREF_SIZE);
-        setMinHeight(USE_PREF_SIZE);
         setMinWidth(USE_PREF_SIZE);
-        setPrefHeight(600.0);
-        setPrefWidth(560.0);
+        setPrefHeight(512.0);
+        setPrefWidth(600.0);
+        getStylesheets().add("/tictactoe/../css/styles.css");
 
-        BorderPane.setAlignment(containerPane, javafx.geometry.Pos.CENTER);
-        containerPane.setId("containerPane");
-        containerPane.setPrefHeight(551.0);
-        containerPane.setPrefWidth(630.0);
-        containerPane.getStylesheets().add("/tictactoe/../css/styles.css");
+        BorderPane.setAlignment(leftSideAnchorPane, javafx.geometry.Pos.CENTER);
+        leftSideAnchorPane.setPrefHeight(512.0);
+        leftSideAnchorPane.setPrefWidth(179.0);
+        setLeft(leftSideAnchorPane);
 
-        AnchorPane.setBottomAnchor(contentPane, 0.0);
-        AnchorPane.setLeftAnchor(contentPane, 95.0);
-        AnchorPane.setRightAnchor(contentPane, 105.66666666666669);
-        AnchorPane.setTopAnchor(contentPane, 0.0);
+        BorderPane.setAlignment(rightSideAnchorPane, javafx.geometry.Pos.CENTER);
+        rightSideAnchorPane.setPrefHeight(587.0);
+        rightSideAnchorPane.setPrefWidth(186.0);
+        setRight(rightSideAnchorPane);
+
+        BorderPane.setAlignment(contentPane, javafx.geometry.Pos.BOTTOM_CENTER);
         contentPane.setId("contentPane");
-        contentPane.setLayoutX(95.0);
+        contentPane.setMaxWidth(USE_PREF_SIZE);
+        contentPane.setMinWidth(USE_PREF_SIZE);
         contentPane.setPrefHeight(600.0);
-        contentPane.setPrefWidth(359.0);
+        contentPane.setPrefWidth(393.0);
 
-        usrNameField.setLayoutX(80.0);
-        usrNameField.setLayoutY(244.0);
+        usrNameField.setLayoutX(88.0);
+        usrNameField.setLayoutY(195.0);
         usrNameField.setPrefHeight(25.0);
         usrNameField.setPrefWidth(200.0);
         usrNameField.setPromptText("Name");
@@ -81,8 +88,8 @@ public class signUpSceneBase extends BorderPane {
         usrNameField.setFont(new Font("System Bold", 13.0));
         usrNameField.setCursor(Cursor.TEXT);
 
-        passwdField.setLayoutX(83.0);
-        passwdField.setLayoutY(358.0);
+        passwdField.setLayoutX(88.0);
+        passwdField.setLayoutY(332.0);
         passwdField.setPrefHeight(25.0);
         passwdField.setPrefWidth(200.0);
         passwdField.setPromptText("Password");
@@ -95,8 +102,8 @@ public class signUpSceneBase extends BorderPane {
 
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        label.setLayoutX(39.0);
-        label.setLayoutY(106.0);
+        label.setLayoutX(53.0);
+        label.setLayoutY(121.0);
         label.setPrefHeight(35.0);
         label.setPrefWidth(287.0);
         label.getStylesheets().add("/tictactoe/../css/styles.css");
@@ -106,8 +113,8 @@ public class signUpSceneBase extends BorderPane {
         label.setFont(new Font("System Bold", 21.0));
 
         signUpBtn.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        signUpBtn.setLayoutX(116.0);
-        signUpBtn.setLayoutY(438.0);
+        signUpBtn.setLayoutX(121.0);
+        signUpBtn.setLayoutY(422.0);
         signUpBtn.setMnemonicParsing(false);
         signUpBtn.setOnAction(this::loadHomeScene);
         signUpBtn.setPrefHeight(25.0);
@@ -121,8 +128,8 @@ public class signUpSceneBase extends BorderPane {
         signUpBtn.setFont(new Font("System Bold", 12.0));
         signUpBtn.setCursor(Cursor.HAND);
 
-        emailField.setLayoutX(80.0);
-        emailField.setLayoutY(300.0);
+        emailField.setLayoutX(88.0);
+        emailField.setLayoutY(264.0);
         emailField.setPrefHeight(25.0);
         emailField.setPrefWidth(200.0);
         emailField.setPromptText("Email");
@@ -133,13 +140,28 @@ public class signUpSceneBase extends BorderPane {
         emailField.setEffect(glow1);
         emailField.setFont(new Font("System Bold", 13.0));
 
-        haveAccountLabel.setLayoutX(114.0);
-        haveAccountLabel.setLayoutY(520.0);
+        haveAccountLabel.setLayoutX(118.0);
+        haveAccountLabel.setLayoutY(502.0);
         haveAccountLabel.setOnMouseClicked(this::loadSingInScene);
         haveAccountLabel.setText("Already have an account ?");
         haveAccountLabel.setTextFill(javafx.scene.paint.Color.valueOf("#73c2fb"));
         haveAccountLabel.setUnderline(true);
-        setCenter(containerPane);
+
+        AnchorPane.setBottomAnchor(homeIcon, 473.33333333333337);
+        AnchorPane.setLeftAnchor(homeIcon, 167.0);
+        AnchorPane.setRightAnchor(homeIcon, 187.14538319905597);
+        AnchorPane.setTopAnchor(homeIcon, 75.0);
+        homeIcon.setAccessibleRole(javafx.scene.AccessibleRole.BUTTON);
+        homeIcon.setAccessibleRoleDescription("toHomePage");
+        homeIcon.setFitHeight(39.0);
+        homeIcon.setFitWidth(40.0);
+        homeIcon.setId("homeIcon");
+        homeIcon.setLayoutX(167.0);
+        homeIcon.setLayoutY(75.0);
+        homeIcon.setPickOnBounds(true);
+        homeIcon.setPreserveRatio(true);
+        homeIcon.setImage(new Image(getClass().getResource("../img/icon.png").toExternalForm()));
+        setCenter(contentPane);
 
         contentPane.getChildren().add(usrNameField);
         contentPane.getChildren().add(passwdField);
@@ -147,7 +169,7 @@ public class signUpSceneBase extends BorderPane {
         contentPane.getChildren().add(signUpBtn);
         contentPane.getChildren().add(emailField);
         contentPane.getChildren().add(haveAccountLabel);
-        containerPane.getChildren().add(contentPane);
+        contentPane.getChildren().add(homeIcon);
 
     }
 
@@ -160,7 +182,7 @@ public class signUpSceneBase extends BorderPane {
             root.translateYProperty().set(scene.getHeight());
             //containerPane.getChildren().add(contentPane);
             //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-            containerPane.getChildren().add(root);
+            contentPane.getChildren().add(root);
 
             Timeline timeLine = new Timeline();
             KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
@@ -172,13 +194,22 @@ public class signUpSceneBase extends BorderPane {
         else{
             //worning mgs
         }
-    
     }
 
     protected void loadSingInScene(javafx.scene.input.MouseEvent mouseEvent){
-        
-        
-    
+        Parent root = signIn;
+        Scene scene = haveAccountLabel.getScene();
+
+        root.translateYProperty().set(scene.getHeight());
+        //containerPane.getChildren().add(contentPane);
+        //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
+        contentPane.getChildren().add(root);
+
+        Timeline timeLine = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeLine.getKeyFrames().add(kf);
+        timeLine.play();
     }
 
 }

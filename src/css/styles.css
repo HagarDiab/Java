@@ -5,10 +5,7 @@
 }
 
 #containerPane{
-    -fx-background-image : url("../img/bg_6.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover, auto;
-
+    -fx-background-color: black;
 }
 #contentPane{
     -fx-background-color: black;

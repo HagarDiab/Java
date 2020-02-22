@@ -21,7 +21,7 @@ import javafx.util.Duration;
 public class signInSceneBase extends BorderPane {
     
     menuSceneBase ms= new menuSceneBase();
-    SignUpSceneBase signUp = new SignUpSceneBase();
+    signUpSceneBase signUp = new signUpSceneBase();
 
     protected final AnchorPane leftSideAnchorPane;
     protected final AnchorPane rightSideAnchorPane;
