@@ -93,3 +93,7 @@ public class TicTacToe extends Application {
     }
 
 }
+/*private TableView<Player> historyTable;
+    private TableColumn <Player, Button> gameDate;
+    private TableColumn <Player, String> player_1;
+    private TableColumn <Player, String> player_2;*/

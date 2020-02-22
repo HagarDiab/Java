@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane id="rootPane" fx:id="rootPane" prefHeight="600.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -14,33 +16,37 @@
          <children>
             <AnchorPane id="contentPane" fx:id="contentPane" layoutX="100.0" prefHeight="600.0" prefWidth="360.0">
                <children>
-                  <ImageView id="logo" fx:id="logo" fitHeight="51.0" fitWidth="50.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="logo" fx:id="logo" fitHeight="51.0" fitWidth="50.0" layoutX="3.0" layoutY="3.0" onMouseClicked="#loadHomeScene" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/icon.png" />
                      </image>
                   </ImageView>
-                  <Label id="gameTitle" fx:id="gameTitle" layoutX="58.0" layoutY="20.0" onMouseClicked="#loadHomaScene" text="TICTOCTOE GAME" textFill="#fce473">
+                  <Label id="gameTitle" fx:id="sceneTitle" layoutX="54.0" layoutY="19.0" text="Game History" textFill="#fce473">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="gameTitle" fx:id="userName" layoutX="23.0" layoutY="118.0" onMouseClicked="#loadHomaScene" text="Hi, userName:" textFill="#fce473">
+                  <Label id="gameTitle" fx:id="userName" layoutX="23.0" layoutY="118.0" text="Hi, userName:" textFill="#fce473">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="gameTitle" fx:id="gameLabel" layoutX="42.0" layoutY="157.0" onMouseClicked="#loadHomaScene" text="Game" textFill="#fce473">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label id="gameTitle" fx:id="gameLabel1" layoutX="134.0" layoutY="157.0" onMouseClicked="#loadHomaScene" text="Date" textFill="#fce473">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Line id="lineH2" fx:id="lineH2" endX="-127.99998474121094" endY="290.0" layoutX="157.0" layoutY="-105.0" startX="159.33334350585938" startY="290.0" stroke="WHITE" strokeWidth="4.0" />
-                  <Line id="lineH2" fx:id="lineH21" endX="-127.99998474121094" endY="290.0" layoutX="157.0" layoutY="-13.0" startX="159.33334350585938" startY="290.0" stroke="WHITE" strokeWidth="4.0" />
+                  <ScrollPane fx:id="scrollTablePane" layoutX="26.0" layoutY="169.0">
+                     <content>
+                        <TableView fx:id="historyTable" prefHeight="288.0" prefWidth="309.0">
+                          <columns>
+                            <TableColumn fx:id="gameDate" prefWidth="99.33341217041016" text="Game_Date" />
+                            <TableColumn fx:id="player_1" prefWidth="108.66661071777344" text="Player 1" />
+                              <TableColumn fx:id="player_2" prefWidth="100.6666259765625" text="Player 2" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+                  <ImageView fx:id="soundIcon" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="35.0" layoutX="300.0" layoutY="79.0" onMouseClicked="#muteSound" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/icons/exit_icon.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
