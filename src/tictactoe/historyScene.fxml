@@ -42,9 +42,9 @@
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <ImageView fx:id="soundIcon" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="35.0" layoutX="300.0" layoutY="79.0" onMouseClicked="#muteSound" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="soundIcon" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="35.0" layoutX="306.0" layoutY="114.0" onMouseClicked="#muteSound" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/icons/exit_icon.jpg" />
+                        <Image url="@../img/sound_icon.png" />
                      </image>
                   </ImageView>
                </children>
