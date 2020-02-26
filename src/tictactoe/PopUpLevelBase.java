@@ -1,11 +1,7 @@
 package tictactoe;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.FadeTransition;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.InnerShadow;
@@ -15,69 +11,70 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class PopUpLevelBase extends BorderPane {
-    
-    gameSceneBase gs =new gameSceneBase();
 
     protected final AnchorPane leftSideAnchorPane;
     protected final AnchorPane rightSideAnchorPane;
+    protected final AnchorPane containerPane;
     protected final AnchorPane contentPane;
     protected final Button hardOption;
     protected final InnerShadow innerShadow;
-    protected final Button mediumOption;
-    protected final InnerShadow innerShadow0;
     protected final Button easyOption;
-    protected final InnerShadow innerShadow1;
+    protected final InnerShadow innerShadow0;
+    protected final AnchorPane anchorPane;
+    protected final AnchorPane anchorPane0;
 
     public PopUpLevelBase() {
-        
 
         leftSideAnchorPane = new AnchorPane();
         rightSideAnchorPane = new AnchorPane();
+        containerPane = new AnchorPane();
         contentPane = new AnchorPane();
         hardOption = new Button();
         innerShadow = new InnerShadow();
-        mediumOption = new Button();
-        innerShadow0 = new InnerShadow();
         easyOption = new Button();
-        innerShadow1 = new InnerShadow();
+        innerShadow0 = new InnerShadow();
+        anchorPane = new AnchorPane();
+        anchorPane0 = new AnchorPane();
 
-        setId("parentPane");
         setMaxWidth(USE_PREF_SIZE);
         setMinWidth(USE_PREF_SIZE);
-        setPrefHeight(300.0);
-        setPrefWidth(300.0);
-        getStylesheets().add("/tictactoe/../css/styles.css");
+        setPrefHeight(578.0);
+        setPrefWidth(600.0);
 
         BorderPane.setAlignment(leftSideAnchorPane, javafx.geometry.Pos.CENTER);
-        leftSideAnchorPane.setPrefHeight(300.0);
-        leftSideAnchorPane.setPrefWidth(37.0);
-        leftSideAnchorPane.setStyle("-fx-background-color: black;");
+        leftSideAnchorPane.setPrefHeight(561.0);
+        leftSideAnchorPane.setPrefWidth(200.0);
         setLeft(leftSideAnchorPane);
 
         BorderPane.setAlignment(rightSideAnchorPane, javafx.geometry.Pos.CENTER);
-        rightSideAnchorPane.setPrefHeight(300.0);
-        rightSideAnchorPane.setPrefWidth(75.0);
-        rightSideAnchorPane.setStyle("-fx-background-color: black;");
+        rightSideAnchorPane.setPrefHeight(561.0);
+        rightSideAnchorPane.setPrefWidth(207.0);
         setRight(rightSideAnchorPane);
 
-        BorderPane.setAlignment(contentPane, javafx.geometry.Pos.BOTTOM_CENTER);
-        contentPane.setId("contentPane");
-        contentPane.setMaxWidth(USE_PREF_SIZE);
-        contentPane.setMinWidth(USE_PREF_SIZE);
-        contentPane.setPrefHeight(300.0);
-        contentPane.setPrefWidth(226.0);
+        BorderPane.setAlignment(containerPane, javafx.geometry.Pos.BOTTOM_CENTER);
+        containerPane.setId("contentPane");
+        containerPane.setMaxHeight(USE_PREF_SIZE);
+        containerPane.setMaxWidth(USE_PREF_SIZE);
+        containerPane.setMinHeight(USE_PREF_SIZE);
+        containerPane.setMinWidth(USE_PREF_SIZE);
+        containerPane.setPrefHeight(264.0);
+        containerPane.setPrefWidth(382.0);
+
+        contentPane.setPrefHeight(266.0);
+        contentPane.setPrefWidth(381.0);
+        contentPane.getStylesheets().add("/tictactoe/../css/styles.css");
 
         hardOption.setAlignment(javafx.geometry.Pos.CENTER);
         hardOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         hardOption.setId("onePlayer");
-        hardOption.setLayoutX(60.0);
-        hardOption.setLayoutY(50.0);
+        hardOption.setLayoutX(125.0);
+        hardOption.setLayoutY(154.0);
         hardOption.setMnemonicParsing(false);
         hardOption.setOnAction(this::loadGameSceneHardLevel);
         hardOption.setPrefHeight(41.0);
         hardOption.setPrefWidth(143.0);
         hardOption.getStyleClass().add("options");
-        hardOption.getStylesheets().add("/tictactoe/../css/styles.css");
+        hardOption.getStylesheets().add("/tictactoe/../../../versions/version%208/TicTacToe/src/css/styles.css");
         hardOption.setText("Hard");
         hardOption.setTextFill(javafx.scene.paint.Color.valueOf("#0a0801"));
         hardOption.setFont(new Font("System Bold", 12.0));
@@ -91,105 +88,75 @@ public class PopUpLevelBase extends BorderPane {
         innerShadow.setWidth(25.0);
         hardOption.setEffect(innerShadow);
 
-        mediumOption.setAlignment(javafx.geometry.Pos.CENTER);
-        mediumOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-        mediumOption.setId("multiPlayer");
-        mediumOption.setLayoutX(62.0);
-        mediumOption.setLayoutY(125.0);
-        mediumOption.setMnemonicParsing(false);
-        mediumOption.setOnAction(this::loadGameSceneMediumLevel);
-        mediumOption.setPrefHeight(41.0);
-        mediumOption.setPrefWidth(143.0);
-        mediumOption.getStyleClass().add("options");
-        mediumOption.getStylesheets().add("/tictactoe/../css/styles.css");
-        mediumOption.setText("Medium");
-        mediumOption.setTextFill(javafx.scene.paint.Color.valueOf("#0a0801"));
-        mediumOption.setFont(new Font("System Bold", 12.0));
-        mediumOption.setCursor(Cursor.HAND);
-
-        innerShadow0.setColor(javafx.scene.paint.Color.WHITE);
-        innerShadow0.setHeight(23.0);
-        innerShadow0.setOffsetY(2.0);
-        innerShadow0.setRadius(11.5);
-        innerShadow0.setWidth(25.0);
-        mediumOption.setEffect(innerShadow0);
-
         easyOption.setAlignment(javafx.geometry.Pos.CENTER);
         easyOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         easyOption.setId("exit");
-        easyOption.setLayoutX(60.0);
-        easyOption.setLayoutY(197.0);
+        easyOption.setLayoutX(125.0);
+        easyOption.setLayoutY(53.0);
         easyOption.setMnemonicParsing(false);
         easyOption.setOnAction(this::loadGameSceneEasyLevel);
         easyOption.setPrefHeight(41.0);
         easyOption.setPrefWidth(143.0);
         easyOption.getStyleClass().add("options");
-        easyOption.getStylesheets().add("/tictactoe/../css/styles.css");
+        easyOption.getStylesheets().add("/tictactoe/../../../versions/version%208/TicTacToe/src/css/styles.css");
         easyOption.setText("Easy");
         easyOption.setTextFill(javafx.scene.paint.Color.valueOf("#0a0801"));
         easyOption.setFont(new Font("System Bold", 12.0));
 
-        innerShadow1.setColor(javafx.scene.paint.Color.WHITE);
-        innerShadow1.setOffsetY(2.0);
-        innerShadow1.setRadius(11.0);
-        innerShadow1.setWidth(25.0);
-        easyOption.setEffect(innerShadow1);
-        setCenter(contentPane);
+        innerShadow0.setColor(javafx.scene.paint.Color.WHITE);
+        innerShadow0.setOffsetY(2.0);
+        innerShadow0.setRadius(11.0);
+        innerShadow0.setWidth(25.0);
+        easyOption.setEffect(innerShadow0);
+        setCenter(containerPane);
+
+        BorderPane.setAlignment(anchorPane, javafx.geometry.Pos.CENTER);
+        anchorPane.setPrefHeight(79.0);
+        anchorPane.setPrefWidth(600.0);
+        setTop(anchorPane);
+
+        BorderPane.setAlignment(anchorPane0, javafx.geometry.Pos.CENTER);
+        anchorPane0.setPrefHeight(144.0);
+        anchorPane0.setPrefWidth(600.0);
+        setBottom(anchorPane0);
 
         contentPane.getChildren().add(hardOption);
-        contentPane.getChildren().add(mediumOption);
         contentPane.getChildren().add(easyOption);
+        containerPane.getChildren().add(contentPane);
 
     }
 
     protected void loadGameSceneEasyLevel(javafx.event.ActionEvent actionEvent){
-        Parent root = gs;
+        GameSceneBase gs = new GameSceneBase();
         Scene scene = easyOption.getScene();
+        BorderPane p = (BorderPane) scene.getRoot();
+        p.setCenter(gs.containerPane);
 
-        root.translateYProperty().set(scene.getHeight());
-        //containerPane.getChildren().add(contentPane);
-        //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        contentPane.getChildren().add(root);
-
-        Timeline timeLine = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeLine.getKeyFrames().add(kf);
-        timeLine.play();
+        makeFadeOut();
         
-    
     }
+    
     
     protected void loadGameSceneHardLevel(javafx.event.ActionEvent actionEvent){
-        Parent root = gs;
+        GameSceneBase gs = new GameSceneBase();
         Scene scene = hardOption.getScene();
+        BorderPane p = (BorderPane) scene.getRoot();
+        p.setCenter(gs.containerPane);
 
-        root.translateYProperty().set(scene.getHeight());
-        //containerPane.getChildren().add(contentPane);
-        //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        contentPane.getChildren().add(root);
-
-        Timeline timeLine = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeLine.getKeyFrames().add(kf);
-        timeLine.play();
+        makeFadeOut();
+        
     }
     
-    protected void loadGameSceneMediumLevel(javafx.event.ActionEvent actionEvent){
-        Parent root = gs;
-        Scene scene = mediumOption.getScene();
-
-        root.translateYProperty().set(scene.getHeight());
-        //containerPane.getChildren().add(contentPane);
-        //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        contentPane.getChildren().add(root);
-
-        Timeline timeLine = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeLine.getKeyFrames().add(kf);
-        timeLine.play();
+    private void makeFadeOut() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.seconds(1));
+        fadeTransition.setNode(containerPane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        //fadeTransition.setOnFinished((ActionEvent event) -> {
+        //    loadHomeScene(event);
+        //});
+        fadeTransition.play(); //to Initiate the transition
     }
 
 

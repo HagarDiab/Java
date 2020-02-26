@@ -1,11 +1,7 @@
 package tictactoe;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.FadeTransition;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.InnerShadow;
@@ -15,11 +11,12 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class PopUpLocalVsNwBase extends BorderPane {
-    
-    gameSceneBase gs =new gameSceneBase();
 
     protected final AnchorPane leftSideAnchorPane;
     protected final AnchorPane rightSideAnchorPane;
+    protected final AnchorPane anchorPane;
+    protected final AnchorPane anchorPane0;
+    protected final AnchorPane containerPane;
     protected final AnchorPane contentPane;
     protected final Button localOption;
     protected final InnerShadow innerShadow;
@@ -30,49 +27,64 @@ public class PopUpLocalVsNwBase extends BorderPane {
 
         leftSideAnchorPane = new AnchorPane();
         rightSideAnchorPane = new AnchorPane();
+        anchorPane = new AnchorPane();
+        anchorPane0 = new AnchorPane();
+        containerPane = new AnchorPane();
         contentPane = new AnchorPane();
         localOption = new Button();
         innerShadow = new InnerShadow();
         nwOption = new Button();
         innerShadow0 = new InnerShadow();
 
-        setId("parentPane");
         setMaxWidth(USE_PREF_SIZE);
         setMinWidth(USE_PREF_SIZE);
-        setPrefHeight(300.0);
-        setPrefWidth(300.0);
-        getStylesheets().add("/tictactoe/../css/styles.css");
+        setPrefHeight(578.0);
+        setPrefWidth(600.0);
 
         BorderPane.setAlignment(leftSideAnchorPane, javafx.geometry.Pos.CENTER);
-        leftSideAnchorPane.setPrefHeight(300.0);
-        leftSideAnchorPane.setPrefWidth(37.0);
-        leftSideAnchorPane.setStyle("-fx-background-color: black;");
+        leftSideAnchorPane.setPrefHeight(561.0);
+        leftSideAnchorPane.setPrefWidth(200.0);
         setLeft(leftSideAnchorPane);
 
         BorderPane.setAlignment(rightSideAnchorPane, javafx.geometry.Pos.CENTER);
-        rightSideAnchorPane.setPrefHeight(300.0);
-        rightSideAnchorPane.setPrefWidth(75.0);
-        rightSideAnchorPane.setStyle("-fx-background-color: black;");
+        rightSideAnchorPane.setPrefHeight(561.0);
+        rightSideAnchorPane.setPrefWidth(207.0);
         setRight(rightSideAnchorPane);
 
-        BorderPane.setAlignment(contentPane, javafx.geometry.Pos.BOTTOM_CENTER);
-        contentPane.setId("contentPane");
-        contentPane.setMaxWidth(USE_PREF_SIZE);
-        contentPane.setMinWidth(USE_PREF_SIZE);
-        contentPane.setPrefHeight(300.0);
-        contentPane.setPrefWidth(226.0);
+        BorderPane.setAlignment(anchorPane, javafx.geometry.Pos.CENTER);
+        anchorPane.setPrefHeight(144.0);
+        anchorPane.setPrefWidth(600.0);
+        setBottom(anchorPane);
+
+        BorderPane.setAlignment(anchorPane0, javafx.geometry.Pos.CENTER);
+        anchorPane0.setPrefHeight(79.0);
+        anchorPane0.setPrefWidth(600.0);
+        setTop(anchorPane0);
+
+        BorderPane.setAlignment(containerPane, javafx.geometry.Pos.BOTTOM_CENTER);
+        containerPane.setId("contentPane");
+        containerPane.setMaxHeight(USE_PREF_SIZE);
+        containerPane.setMaxWidth(USE_PREF_SIZE);
+        containerPane.setMinHeight(USE_PREF_SIZE);
+        containerPane.setMinWidth(USE_PREF_SIZE);
+        containerPane.setPrefHeight(264.0);
+        containerPane.setPrefWidth(382.0);
+
+        contentPane.setPrefHeight(266.0);
+        contentPane.setPrefWidth(381.0);
+        contentPane.getStylesheets().add("/tictactoe/../css/styles.css");
 
         localOption.setAlignment(javafx.geometry.Pos.CENTER);
         localOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         localOption.setId("onePlayer");
-        localOption.setLayoutX(62.0);
-        localOption.setLayoutY(62.0);
+        localOption.setLayoutX(119.0);
+        localOption.setLayoutY(65.0);
         localOption.setMnemonicParsing(false);
         localOption.setOnAction(this::loadGameSceneWithLocal);
         localOption.setPrefHeight(41.0);
         localOption.setPrefWidth(143.0);
         localOption.getStyleClass().add("options");
-        localOption.getStylesheets().add("/tictactoe/../css/styles.css");
+        localOption.getStylesheets().add("/tictactoe/../../../versions/version%208/TicTacToe/src/css/styles.css");
         localOption.setText("Local");
         localOption.setTextFill(javafx.scene.paint.Color.valueOf("#0a0801"));
         localOption.setFont(new Font("System Bold", 12.0));
@@ -89,14 +101,14 @@ public class PopUpLocalVsNwBase extends BorderPane {
         nwOption.setAlignment(javafx.geometry.Pos.CENTER);
         nwOption.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         nwOption.setId("multiPlayer");
-        nwOption.setLayoutX(62.0);
-        nwOption.setLayoutY(169.0);
+        nwOption.setLayoutX(119.0);
+        nwOption.setLayoutY(149.0);
         nwOption.setMnemonicParsing(false);
         nwOption.setOnAction(this::loadGameSceneWithNw);
         nwOption.setPrefHeight(41.0);
         nwOption.setPrefWidth(143.0);
         nwOption.getStyleClass().add("options");
-        nwOption.getStylesheets().add("/tictactoe/../css/styles.css");
+        nwOption.getStylesheets().add("/tictactoe/../../../versions/version%208/TicTacToe/src/css/styles.css");
         nwOption.setText("Network");
         nwOption.setTextFill(javafx.scene.paint.Color.valueOf("#0a0801"));
         nwOption.setFont(new Font("System Bold", 12.0));
@@ -108,47 +120,44 @@ public class PopUpLocalVsNwBase extends BorderPane {
         innerShadow0.setRadius(11.5);
         innerShadow0.setWidth(25.0);
         nwOption.setEffect(innerShadow0);
-        setCenter(contentPane);
+        setCenter(containerPane);
 
         contentPane.getChildren().add(localOption);
         contentPane.getChildren().add(nwOption);
+        containerPane.getChildren().add(contentPane);
 
     }
 
-    protected void loadGameSceneWithLocal(javafx.event.ActionEvent actionEvent){
-        Parent root = gs;
+    protected void loadGameSceneWithLocal(javafx.event.ActionEvent actionEvent) {
+        GameSceneBase gs = new GameSceneBase();
         Scene scene = localOption.getScene();
+        BorderPane p = (BorderPane) scene.getRoot();
+        p.setCenter(gs.containerPane);
 
-        root.translateYProperty().set(scene.getHeight());
-        //containerPane.getChildren().add(contentPane);
-        //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        contentPane.getChildren().add(root);
+        makeFadeOut();
 
-        Timeline timeLine = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeLine.getKeyFrames().add(kf);
-        timeLine.play();
-    
-    
     }
-    
-    protected void loadGameSceneWithNw(javafx.event.ActionEvent actionEvent){
-        Parent root = gs;
+
+    protected void loadGameSceneWithNw(javafx.event.ActionEvent actionEvent) {
+        GameSceneBase gs = new GameSceneBase();
         Scene scene = nwOption.getScene();
+        BorderPane p = (BorderPane) scene.getRoot();
+        p.setCenter(gs.containerPane);
 
-        root.translateYProperty().set(scene.getHeight());
-        //containerPane.getChildren().add(contentPane);
-        //BorderPane.setAlignment(root, javafx.geometry.Pos.CENTER);
-        contentPane.getChildren().add(root);
-
-        Timeline timeLine = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeLine.getKeyFrames().add(kf);
-        timeLine.play();
+        makeFadeOut();
 
     }
 
+    private void makeFadeOut() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.seconds(1));
+        fadeTransition.setNode(containerPane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        //fadeTransition.setOnFinished((ActionEvent event) -> {
+        //    loadHomeScene(event);
+        //});
+        fadeTransition.play(); //to Initiate the transition
+    }
 
 }

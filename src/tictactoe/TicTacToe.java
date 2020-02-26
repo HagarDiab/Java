@@ -28,11 +28,9 @@ import javafx.util.Duration;
  */
 public class TicTacToe extends Application {
 
-    splachScreen sc = new splachScreen();
+    SplachScreenBase sc = new SplachScreenBase();
+    SignInSceneBase signIn = new SignInSceneBase();
 
-    signInSceneBase signIn = new signInSceneBase();
-    FXMLTmpBase tmp = new FXMLTmpBase();
-    historySceneBase hs = new historySceneBase();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -40,7 +38,7 @@ public class TicTacToe extends Application {
         ScaleTransition scaleTransition = new ScaleTransition();
         scaleTransition.setDuration(Duration.millis(1000));
         scaleTransition.setNode(sc.logo);
-        scaleTransition.setNode(sc.gameTitle);
+        scaleTransition.setNode(sc.label);
         scaleTransition.setByY(1.5);
         scaleTransition.setByX(1.5);
         scaleTransition.setCycleCount(30);
